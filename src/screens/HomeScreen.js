@@ -4,9 +4,11 @@ import {
   Button,
   StyleSheet,
   View,
+  Alert,
 } from 'react-native';
 
 import Info from '../components/Info';
+import Config from 'react-native-config';
 
 import { GREETINGS_SCENE_NAME } from '../screens/GreetingsScreen';
 import { JSX_SCENE_NAME } from '../screens/JsxScreen';
@@ -19,6 +21,19 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
+
+const monAlert = () => {
+  Alert.alert(
+    'Alert Title',
+    'My Alert Msg',
+    [
+      { text: 'Ask me later', onPress: () => console.log('Ask me later pressed') },
+      { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
+      { text: 'OK', onPress: () => console.log('OK Pressed') },
+    ],
+    { cancelable: false },
+  );
+};
 
 export default class HomeScreen extends Component {
 
@@ -69,6 +84,12 @@ export default class HomeScreen extends Component {
           <Button
             onPress={this.navigateToState}
             title="State"
+          />
+        </View>
+        <View style={styles.margin}>
+          <Button
+            onPress={monAlert}
+            title="Buddy Alerts"
           />
         </View>
       </ScrollView>
